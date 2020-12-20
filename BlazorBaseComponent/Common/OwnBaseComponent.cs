@@ -5,7 +5,7 @@ using Serilog;
 using System;
 using System.Threading.Tasks;
 
-namespace BlazorBaseComponent.Components.Common
+namespace BlazorBaseComponent.Comomon
 {
     public partial class OwnBaseComponent : ComponentBase
     {
@@ -21,8 +21,8 @@ namespace BlazorBaseComponent.Components.Common
 
         protected NavigationManager Navigator => NavigationManager;
 
-        protected async Task<bool> ShowConfirm(string message) => 
-            await JsRuntime.InvokeAsync<bool>("confirm", message);        
+        protected async Task<bool> ShowConfirm(string message) =>
+            await JsRuntime.InvokeAsync<bool>("confirm", message);
 
         protected async Task<T> DoSafeFunc<T>(Func<T> func)
         {
@@ -40,7 +40,7 @@ namespace BlazorBaseComponent.Components.Common
                     Log.Error(ex, "Wystąpił wyjątek");
                 }
 
-                await ShowNotification(new NotificationMessage 
+                await ShowNotification(new NotificationMessage
                 {
                     Severity = NotificationSeverity.Error,
                     Detail = ex.Message,
